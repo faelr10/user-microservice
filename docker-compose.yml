@@ -1,0 +1,18 @@
+version: '3.8'
+
+networks:
+  micro-lumen-nest:
+    external: true
+
+services:
+  micro-service-user:
+    container_name: micro-service-user
+    build:
+      context: ./
+    ports:
+      - "3000:3000"
+      # Evita conflitos com os node_modules do host
+    environment:
+      KAFKA_BROKER: kafka:9092
+    networks:
+      - micro-lumen-nest

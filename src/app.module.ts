@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UserController } from './user/user.controller';
+import { EmailProducerModule } from './kafka/email-producer-kafka/email-producer.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [],
-  controllers: [UserController],
+  imports: [EmailProducerModule, UserModule],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}
